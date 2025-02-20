@@ -1,6 +1,12 @@
 
 # No Country App Backend
 
+### Versiones
+
+- Versión de Spring boot: 3.4.2
+- Tecnologia: Maven
+- Packaging: Jar
+- Java: 21
 
 ### Dependecias Utilizadas
 
@@ -9,10 +15,3 @@
 - MySQL Driver
 - Spring Boot DevTools
 - Lombok
-
-### Versiones
-
-- Versión de Spring boot: 3.4.2
-- Tecnologia: Maven
-- Packaging: Jar
-- Java: 21
