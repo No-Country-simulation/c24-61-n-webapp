@@ -23,7 +23,7 @@ Gestión completa de usuarios, ofertas de empleo y procesos de selección.
 ## 🛠️ Tecnologías Utilizadas
 
 ### **Backend**
-- .NET 7+ con C#
+- java
 - Implementación de autenticación y autorización.
 - Manejo de datos con **Entity Framework Core**.
 
