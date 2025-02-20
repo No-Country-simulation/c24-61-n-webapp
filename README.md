@@ -25,7 +25,7 @@ Gestión completa de usuarios, ofertas de empleo y procesos de selección.
 ### **Backend**
 - java
 - Implementación de autenticación y autorización.
-- Manejo de datos con **Entity Framework Core**.
+- Manejo de datos con mySQL.
 
 ### **Frontend**
 - Angular 18+
