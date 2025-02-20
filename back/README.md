@@ -4,7 +4,7 @@
 ### Versiones
 
 - Versión de Spring boot: 3.4.2
-- Tecnologia: Maven
+- Gestor: Maven
 - Packaging: Jar
 - Java: 21
 
