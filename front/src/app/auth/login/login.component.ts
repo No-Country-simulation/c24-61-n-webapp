@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import {Toast } from 'primeng/toast';
+import { AuthService } from '../services/auth.services';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
   showPassword: boolean = false;
   errorMessage: string = '';
 
-  constructor(private _router: Router, private _messageService:MessageService) {}
+  constructor(private _router: Router, private _messageService:MessageService, private _authService:AuthService) {}
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -32,13 +33,19 @@ export class LoginComponent {
       return;
     }
 
-    if (this.username() === 'flaviosalasevicius@hotmail.com' && this.password() === 'Flavio2022') {
-      this._router.navigate(['/dashboard']);
-      this._messageService.add({severity:'success', summary: 'Operación Exitosa', detail: 'Redireccionando al Home.'});
-    } else {
-      this.errorMessage = 'Credenciales incorrectas.';
-
-    }
+    this._authService.login(this.username(), this.password()).subscribe({
+      next: (response) => {
+        this._messageService.add({
+          severity: 'success',
+          summary: 'Operación Exitosa',
+          detail: 'Redireccionando al Home.'
+        });
+        this._router.navigate(['/dashboard']);
+      },
+      error: () => {
+        this.errorMessage = 'Credenciales incorrectas.';
+      }
+    });
   }
 
   show(){

@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { AuthService } from '../services/auth.services';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,7 @@ export class RegisterComponent {
   showPassword2 = signal(false);
   errorMessage = signal('');
 
-  constructor(private fb: FormBuilder, private _router: Router, private _messageService:MessageService) {
+  constructor(private fb: FormBuilder, private _router: Router, private _messageService:MessageService, private _authService: AuthService) {
     this.registerForm = this.fb.group(
       {
         username: ['', [Validators.required, Validators.email]],
@@ -67,10 +68,20 @@ export class RegisterComponent {
     if (this.registerForm.invalid) {
       this.errorMessage.set('Por favor, complete todos los campos correctamente.');
       return;
-    }else{
-      this._messageService.add({severity:'info', summary: 'Info', detail: 'Registro exitoso.'});
-
     }
 
+    this._authService.register(this.username(), this.password()).subscribe({
+      next: (response) => {
+        this._messageService.add({
+          severity: 'success',
+          summary: 'Registro Exitoso',
+          detail: 'Tu cuenta ha sido creada con éxito.'
+        });
+        this._router.navigate(['/login']);
+      },
+      error: () => {
+        this.errorMessage.set('Hubo un error al registrar la cuenta.');
+      }
+    });
   }
 }
