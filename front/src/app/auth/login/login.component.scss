@@ -1,24 +1,128 @@
-.container {
+
+.contenedor {
+  display: flex;
   height: 100vh;
 }
 
+.panel-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  background-color: #fff;
+}
+
+.panel-img {
+  width: 70%;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+}
+
+.panel-img img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .card {
-  border-radius: 10px;
+  width: 100%;
+  padding: 2.5rem;
+  border: none!important;
+  background-color: #fff;
+  box-shadow: none;
+}
+
+.card img {
+  margin-bottom: 0.5rem;
+}
+
+.card h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #1f2937;
+  margin-bottom: 0;
+}
+
+.card p {
+  font-size: 1.3rem;
+  font-family: "Montserrat";
+  color: #000000!important;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border 0.3s;
+}
+
+.form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
 }
 
 .input-group button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.input-group button:hover {
+  background-color: #e5e7eb;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  border: none;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #2563eb;
+}
+
+a:hover {
+  color: #1e40af !important;
+  cursor: pointer !important;
 }
 
 .alert {
   font-size: 0.9rem;
+  border-radius: 8px;
+  text-align: center;
 }
 
-a{
-  text-decoration: none;
+.form-label{
+  font-weight: 600;
 }
-a:hover{
-  color: orangered!important;
-  cursor: pointer !important;
+
+@media (max-width: 768px) {
+  .contenedor {
+    flex-direction: column;
+  }
+
+  .panel-login,
+  .panel-img {
+    width: 100%;
+  }
+
+  .panel-img {
+    display: none;
+  }
 }
