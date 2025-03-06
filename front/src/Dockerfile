@@ -4,19 +4,19 @@ FROM node:18.19.0 AS build
 # Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos de la aplicación al contenedor
-COPY package*.json ./
+# Copiar los archivos de la aplicación (incluido package.json) al contenedor
+COPY frontend/package*.json ./
 
 # Instalar las dependencias
 RUN npm install
 
-# Copiar todo el código fuente
-COPY . .
+# Copiar el resto de los archivos del frontend
+COPY frontend/ .
 
-# Construir la aplicación
+# Construir la aplicación Angular
 RUN npm run build --prod
 
-# Paso 2: Servir la aplicación con un servidor estático
+# Paso 2: Servir la aplicación con Nginx
 FROM nginx:alpine
 
 # Copiar los archivos de la aplicación construida al servidor Nginx
