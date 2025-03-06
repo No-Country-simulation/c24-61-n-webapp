@@ -1,0 +1,24 @@
+.container {
+  height: 100vh;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.input-group button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.alert {
+  font-size: 0.9rem;
+}
+
+a{
+  text-decoration: none;
+}
+a:hover{
+  color: orangered!important;
+  cursor: pointer !important;
+}
