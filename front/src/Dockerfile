@@ -1,28 +1,28 @@
-# Paso 1: Construir la aplicación
+# Paso 1: Construir la aplicación Angular
 FROM node:18.19.0 AS build
 
-# Establecer el directorio de trabajo
+# Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiar los archivos de la aplicación (incluido package.json) al contenedor
-COPY frontend/package*.json ./
+# Copiar package.json y package-lock.json para instalar dependencias primero
+COPY package*.json ./
 
-# Instalar las dependencias
+# Instalar las dependencias de la aplicación Angular
 RUN npm install
 
-# Copiar el resto de los archivos del frontend
-COPY frontend/ .
+# Copiar el resto del código fuente de la aplicación
+COPY . .
 
-# Construir la aplicación Angular
-RUN npm run build --prod
+# Construir la aplicación Angular en modo producción
+RUN npm run build -- --configuration=production
 
 # Paso 2: Servir la aplicación con Nginx
 FROM nginx:alpine
 
-# Copiar los archivos de la aplicación construida al servidor Nginx
-COPY --from=build /app/dist/ /usr/share/nginx/html
+# Copiar los archivos de la aplicación compilada al servidor Nginx
+COPY --from=build /app/dist/frontend/ /usr/share/nginx/html
 
-# Exponer el puerto
+# Exponer el puerto 80
 EXPOSE 80
 
 # Iniciar Nginx
