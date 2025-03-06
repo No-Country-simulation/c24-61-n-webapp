@@ -5,7 +5,7 @@ FROM node:18.19.0 AS build
 WORKDIR /app
 
 # Copiar los archivos de la aplicación (incluido package.json) al contenedor
-COPY frontend/package*.json ./
+COPY front/package*.json ./
 
 # Instalar las dependencias
 RUN npm install
