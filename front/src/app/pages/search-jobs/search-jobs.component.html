@@ -1,0 +1,21 @@
+<div class="busqueda-container">
+  <h2 class="titulo">Encuentra tu próximo empleo</h2>
+
+  <div class="busqueda-barra">
+    <input type="text" placeholder="Buscar por título, empresa o palabras clave" class="input-busqueda" />
+    <input type="text" placeholder="Ubicación" class="input-busqueda" />
+    <button class="btn-buscar">Buscar</button>
+  </div>
+
+  <div class="tarjetas">
+    <div class="tarjeta" *ngFor="let empleo of empleos">
+      <h3 class="titulo-empleo">{{ empleo.titulo }}</h3>
+      <p class="empresa">{{ empleo.empresa }}</p>
+      <p class="ubicacion">📍 {{ empleo.ubicacion }}</p>
+      <p class="fecha">🕒 {{ empleo.fecha }}</p>
+      <p class="salario">{{ empleo.salario }}</p>
+      <p class="descripcion">{{ empleo.descripcion }}</p>
+      <button class="btn-detalles">Ver detalles</button>
+    </div>
+  </div>
+</div>
