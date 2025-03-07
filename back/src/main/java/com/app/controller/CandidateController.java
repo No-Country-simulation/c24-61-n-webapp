@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import com.app.domain.candidate.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/candidates")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearer-key")
 public class CandidateController {
     private final CandidateService candidateService;
 
