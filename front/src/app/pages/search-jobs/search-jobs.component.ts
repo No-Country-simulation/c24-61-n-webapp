@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search-jobs',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './search-jobs.component.html',
   styleUrl: './search-jobs.component.scss'
 })
 export class SearchJobsComponent {  empleos = [
   {
+    id: 1,
     titulo: 'Desarrollador Frontend',
     empresa: 'TechSolutions',
     ubicacion: 'Madrid, España',
@@ -17,6 +19,7 @@ export class SearchJobsComponent {  empleos = [
     descripcion: 'Buscamos un desarrollador frontend con experiencia en React y TypeScript para unirse a nuestro equipo.'
   },
   {
+    id: 2,
     titulo: 'Ingeniero de Software Backend',
     empresa: 'DataCorp',
     ubicacion: 'Barcelona, España',
@@ -25,6 +28,7 @@ export class SearchJobsComponent {  empleos = [
     descripcion: 'Desarrollador backend con experiencia en Node.js, Express y bases de datos SQL/NoSQL.'
   },
   {
+    id: 3,
     titulo: 'Diseñador UX/UI',
     empresa: 'CreativeMinds',
     ubicacion: 'Valencia, España',
@@ -33,6 +37,7 @@ export class SearchJobsComponent {  empleos = [
     descripcion: 'Diseñador UX/UI con experiencia en herramientas de diseño modernas y conocimientos de principios de usabilidad.'
   },
   {
+    id: 4,
     titulo: 'DevOps Engineer',
     empresa: 'CloudSystems',
     ubicacion: 'Sevilla, España',

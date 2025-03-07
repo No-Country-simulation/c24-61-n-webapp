@@ -15,7 +15,8 @@
       <p class="fecha">🕒 {{ empleo.fecha }}</p>
       <p class="salario">{{ empleo.salario }}</p>
       <p class="descripcion">{{ empleo.descripcion }}</p>
-      <button class="btn-detalles">Ver detalles</button>
+      <a [routerLink]="['/empleo', empleo.id]" class="btn-detalles">Ver detalles</a>
+
     </div>
   </div>
 </div>
