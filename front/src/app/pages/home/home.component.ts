@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeHeroComponent } from '../../components/home/home-hero/home-hero.component';
 import { HomeFeaturesComponent } from '../../components/home/home-features/home-features.component';
+import { HeroComponent } from '../../shared/home-hero/hero.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HomeHeroComponent, HomeFeaturesComponent],
+  imports: [CommonModule, HeroComponent, HomeFeaturesComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
