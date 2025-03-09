@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 
 @Service
 public class TokenService {
@@ -33,7 +35,6 @@ public class TokenService {
         }
     }
 
-
     public String getSubject(String jwt) {
         try {
             var algorithm = Algorithm.HMAC256(apiSecret);
@@ -53,9 +54,7 @@ public class TokenService {
         }
     }
 
-
     private Instant createExpirationDate() {
-        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-07:00"));
+        return Instant.now().plus(1, ChronoUnit.DAYS);
     }
-
 }
