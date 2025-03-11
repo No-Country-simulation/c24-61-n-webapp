@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   selector: 'app-search-detail',
   imports: [CommonModule, RouterLink],
   templateUrl: './search-detail.component.html',
-  styleUrl: './search-detail.component.scss'
+  styleUrl: './search-detail.component.scss',
 })
 export class SearchDetailComponent {
   empleoId: string | null = null;
@@ -16,34 +16,35 @@ export class SearchDetailComponent {
     ubicacion: 'Madrid, España',
     fecha: 'Hace 2 días',
     salario: '40,000€ - 55,000€',
-    descripcion: 'Buscamos un desarrollador frontend con experiencia en React y TypeScript...',
+    descripcion:
+      'Buscamos un desarrollador frontend con experiencia en React y TypeScript...',
     requisitos: [
       '3+ años de experiencia con React',
       'Experiencia con TypeScript',
       'Conocimientos de HTML, CSS y JavaScript',
       'Familiaridad con herramientas de control de versiones (Git)',
-      'Experiencia con metodologías ágiles'
+      'Experiencia con metodologías ágiles',
     ],
     responsabilidades: [
       'Desarrollar interfaces de usuario responsivas y accesibles',
       'Colaborar con diseñadores UX/UI y desarrolladores backend',
       'Implementar nuevas características y mantener el código existente',
       'Participar en revisiones de código y pruebas',
-      'Optimizar aplicaciones para máximo rendimiento'
+      'Optimizar aplicaciones para máximo rendimiento',
     ],
     beneficios: [
       'Horario flexible',
       'Trabajo remoto parcial',
       'Seguro médico',
       'Plan de pensiones',
-      'Formación continua'
+      'Formación continua',
     ],
     empresaInfo: {
       nombre: 'TechSolutions',
       ubicacion: 'Madrid, España',
       empleados: '50-100 empleados',
-      fundada: 'Fundada en 2010'
-    }
+      fundada: 'Fundada en 2010',
+    },
   };
 
   constructor(private route: ActivatedRoute) {}
