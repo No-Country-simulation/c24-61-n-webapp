@@ -1,11 +1,9 @@
-package com.app.domain.recruiter;
+package com.app.domain.recruiter.dto;
 
-import com.app.infra.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-public record RecruiterRegister(
+public record RecruiterRegisterDto(
         @NotBlank
         String name,
         String identification,

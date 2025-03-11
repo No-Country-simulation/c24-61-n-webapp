@@ -1,6 +1,7 @@
 package com.app.domain.candidate;
 
 import com.app.domain.application.Application;
+import com.app.domain.candidate.dto.CandidateRegisterDto;
 import com.app.infra.enums.Location;
 import com.app.domain.user.User;
 import jakarta.persistence.*;

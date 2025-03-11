@@ -20,7 +20,9 @@ public class SpringDocConfiguration {
                                 new SecurityScheme()
                                         .type(SecurityScheme.Type.HTTP)
                                         .scheme("bearer")
-                                        .bearerFormat("JWT")))
+                                        .bearerFormat("JWT")
+                        )
+                )
                 .info(new Info()
                         .title("Seek & Work API")
                         .description("API RESTful de la aplicación Seek & Work, que contiene las funcionalidades" +
@@ -31,6 +33,9 @@ public class SpringDocConfiguration {
                                 .email("backend@seekandwork.com"))
                         .license(new License()
                                 .name("Licencia MIT")
-                                .url("https://kzmin9wef22oc54ypdu9.lite.vusercontent.net/licencia")));
+                                .url("https://kzmin9wef22oc54ypdu9.lite.vusercontent.net/licencia")
+                        )
+                )
+                ;
     }
 }

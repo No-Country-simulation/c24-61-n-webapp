@@ -1,9 +1,14 @@
 package com.app.controller;
 
 import com.app.domain.user.User;
-import com.app.domain.user.UserAuthentication;
+import com.app.domain.user.dto.UserAuthenticationDto;
 import com.app.infra.security.JwtToken;
 import com.app.infra.security.TokenService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/login")
+@Tag(name = "Authentication", description = "Endpoints for authentication purposes")
 public class AuthenticationController {
 
     @Autowired
@@ -26,15 +32,19 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity authenticateUser(@RequestBody @Valid UserAuthentication userAuthentication) {
-
+    @Operation(summary = "User login", description = "Authenticates user credentials, and returns a JWT")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Successful authentication",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = JwtToken.class))
+    )
+    public ResponseEntity<JwtToken> authenticateUser(@RequestBody @Valid UserAuthenticationDto userAuthenticationDto) {
         Authentication token = new UsernamePasswordAuthenticationToken(
-                userAuthentication.email(), userAuthentication.password());
+                userAuthenticationDto.email(), userAuthenticationDto.password());
 
         var authenticatedToken = authenticationManager.authenticate(token);
         var jwt = tokenService.createToken((User) authenticatedToken.getPrincipal());
 
         return ResponseEntity.ok(new JwtToken(jwt));
     }
-
 }
