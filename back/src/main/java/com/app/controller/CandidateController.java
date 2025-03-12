@@ -1,10 +1,10 @@
 package com.app.controller;
 
-import com.app.domain.candidate.*;
-import com.app.domain.candidate.dto.CandidateListDto;
-import com.app.domain.candidate.dto.CandidateRegisterDto;
-import com.app.domain.candidate.dto.CandidateResponseDto;
-import com.app.domain.candidate.dto.CandidateUpdateDto;
+import com.app.domain.dto.candidate.CandidateListDto;
+import com.app.domain.dto.candidate.CandidateRegisterDto;
+import com.app.domain.dto.candidate.CandidateResponseDto;
+import com.app.domain.dto.candidate.CandidateUpdateDto;
+import com.app.service.CandidateService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

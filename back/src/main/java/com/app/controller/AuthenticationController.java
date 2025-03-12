@@ -1,9 +1,9 @@
 package com.app.controller;
 
-import com.app.domain.user.User;
-import com.app.domain.user.dto.UserAuthenticationDto;
-import com.app.infra.security.JwtToken;
-import com.app.infra.security.TokenService;
+import com.app.domain.model.user.User;
+import com.app.domain.dto.user.UserAuthenticationDto;
+import com.app.security.JwtToken;
+import com.app.security.TokenService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
