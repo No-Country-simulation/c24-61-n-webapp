@@ -101,32 +101,40 @@
 
   .tabs-container {
     background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
     margin-bottom: 2rem;
+    
+    .container {
+      border-bottom: 1px solid #dee2e6;
 
-    .tabs {
-      display: flex;
-      gap: 0.5rem;
-      padding: 1rem 0;
-      overflow-x: auto;
+      .tabs {
+        display: flex;
+        gap: 0.5rem;
+        padding: 1rem 0;
+        justify-content: space-between;
+        width: 100%;
 
-      @media (max-width: 768px) {
-        justify-content: flex-start;
-        padding: 1rem;
+        @media (max-width: 768px) {
+          justify-content: flex-start;
+          overflow-x: auto;
+          padding: 1rem 0;
+        }
       }
     }
 
     .tab-button {
+      flex: 1;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
+      padding: 0.75rem 1.5rem;
       border-radius: 0.5rem;
       color: #6c757d;
       text-decoration: none;
       transition: all 0.2s ease-in-out;
       white-space: nowrap;
       border: 1px solid transparent;
+      min-width: 140px;
 
       i {
         font-size: 1.1rem;
@@ -536,14 +544,14 @@
   }
 
   .gallery-section {
-    min-height: 400px;  // Asegura un espacio mínimo
+    min-height: 400px;
     margin-bottom: 3rem;
 
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1rem;
-      margin-bottom: 2rem;  // Agrega margen inferior
+      margin-bottom: 2rem;
 
       .photo-item {
         img {
