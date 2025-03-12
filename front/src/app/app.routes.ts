@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { SearchDetailComponent } from './pages/search-detail/search-detail.component';
+import { CompanyProfilesComponent } from './pages/companies/company-profiles/company-profiles.component';
 
 export const routes: Routes = [
   {
@@ -27,7 +28,7 @@ export const routes: Routes = [
         (m) => m.CompaniesComponent
       ),
   },
-  { path: 'empresa/:id', component: SearchDetailComponent },
+  { path: 'empresa/:id', component: CompanyProfilesComponent },
   {
     path: 'login',
     loadComponent: () =>

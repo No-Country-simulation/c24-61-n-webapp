@@ -21,7 +21,7 @@ interface Benefit {
 }
 
 interface Testimonial {
-  id: number;  // Added id field
+  id: number; 
   rating: number;
   quote: string;
   author: string;
