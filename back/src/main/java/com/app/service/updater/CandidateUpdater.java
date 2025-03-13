@@ -2,11 +2,10 @@ package com.app.service.updater;
 
 import com.app.domain.dto.candidate.CandidateUpdateDto;
 import com.app.domain.model.Candidate;
-import org.springframework.stereotype.Component;
 
-@Component
 public class CandidateUpdater {
-    public static Candidate updateCandidateFields(Candidate candidate, CandidateUpdateDto payload) {
+
+    public static Candidate updateCandidate(Candidate candidate, CandidateUpdateDto payload) {
         if (payload.name() != null) candidate.setName(payload.name());
         if (payload.identification() != null) candidate.setIdentification(payload.identification());
         if (payload.phoneNumber() != null) candidate.setPhoneNumber(payload.phoneNumber());

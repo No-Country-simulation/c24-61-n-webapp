@@ -23,8 +23,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/candidates")
+@Tag(name = "Candidate", description = "Endpoints for Candidates management")
 @RequiredArgsConstructor
-@Tag(name = "Candidate", description = "Endpoints for Candidate's management")
 public class CandidateController {
     private final CandidateService candidateService;
 
@@ -59,6 +59,20 @@ public class CandidateController {
         return ResponseEntity.ok(candidatesDto);
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "Get candidate", description = "Shows all the details from a candidate registered")
+    @SecurityRequirement(name = "bearer-key")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Successful retrieve candidate",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = CandidateResponseDto.class))
+    )
+    public ResponseEntity<CandidateResponseDto> showCandidate(@PathVariable Long id) {
+        var candidate = candidateService.getCandidate(id);
+        var candidateDto = new CandidateResponseDto(candidate);
+        return ResponseEntity.ok(candidateDto);
+    }
+
     @PatchMapping("/{id}")
     @Operation(summary = "Update candidate's info", description = "Updates the candidate's personal info in the database")
     @SecurityRequirement(name = "bearer-key")
@@ -73,5 +87,18 @@ public class CandidateController {
         var candidate = candidateService.updateCandidate(id, payload);
         var candidateDto = new CandidateResponseDto(candidate);
         return ResponseEntity.ok(candidateDto);
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete candidate", description = "Erases a candidate registered in the database")
+    @SecurityRequirement(name = "bearer-key")
+    @ApiResponse(
+            responseCode = "204",
+            description = "Candidate deleted successfully"
+    )
+    @Transactional
+    public ResponseEntity<Void> deleteCandidate(@PathVariable Long id) {
+        candidateService.deleteCandidate(id);
+        return ResponseEntity.noContent().build();
     }
 }
