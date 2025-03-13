@@ -31,10 +31,16 @@
   <div class="tabs-container">
     <div class="container">
       <div class="tabs">
-        <button [class.active]="activeTab === 'about'" (click)="setActiveTab('about')">Sobre nosotros</button>
-        <button [class.active]="activeTab === 'jobs'" (click)="setActiveTab('jobs')">Ofertas de empleo</button>
-        <button [class.active]="activeTab === 'culture'" (click)="setActiveTab('culture')">Cultura y beneficios</button>
-        <button [class.active]="activeTab === 'gallery'" (click)="setActiveTab('gallery')">Galería</button>
+        <a 
+          *ngFor="let tab of tabs" 
+          [routerLink]="[]" 
+          [queryParams]="{tab: tab.value}" 
+          [class.active]="activeTab === tab.value"
+          class="tab-button"
+        >
+          <i [class]="'bi ' + tab.icon"></i>
+          <span>{{tab.label}}</span>
+        </a>
       </div>
     </div>
   </div>
@@ -169,16 +175,31 @@
     <!-- Culture Tab -->
     <div class="tab-content" *ngIf="activeTab === 'culture'">
       <section class="culture-section">
-        <h2>Cultura y beneficios</h2>
-        <div class="benefits-grid">
-          <div class="benefit-item" *ngFor="let benefit of company.benefits">
-            <i class="bi bi-check-circle-fill"></i>
-            <span>{{benefit}}</span>
+        <div class="culture-header text-center mb-5">
+          <h2 class="display-6 fw-bold">Cultura y beneficios en {{company.name}}</h2>
+          <p class="lead text-muted mx-auto" style="max-width: 800px;">Descubre lo que hace especial trabajar con nosotros</p>
+        </div>
+
+        <div class="benefits-section">
+          <div class="benefits-header text-center mb-4">
+            <h3 class="fw-bold">Beneficios</h3>
+            <p class="text-muted">Lo que ofrecemos a nuestro equipo</p>
+          </div>
+          <div class="benefits-grid">
+            <div class="benefit-card" *ngFor="let benefit of company.benefits">
+              <div class="benefit-icon">
+                <i class="bi bi-check-circle-fill text-primary"></i>
+              </div>
+              <h4>{{benefit}}</h4>
+            </div>
           </div>
         </div>
 
-        <div class="team-section">
-          <h3>Equipo directivo</h3>
+        <div class="team-section mt-5">
+          <div class="team-header text-center mb-4">
+            <h3 class="fw-bold">Equipo directivo</h3>
+            <p class="text-muted">Las personas que lideran nuestra visión</p>
+          </div>
           <div class="team-grid">
             <div class="team-member" *ngFor="let member of company.team">
               <img [src]="member.avatar" [alt]="member.name">
