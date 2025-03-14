@@ -21,6 +21,7 @@ export const routes: Routes = [
       ),
   },
   { path: 'empleo/:id', component: SearchDetailComponent },
+
   {
     path: 'empresas',
     loadComponent: () =>
@@ -48,5 +49,6 @@ export const routes: Routes = [
         (m) => m.RegisterComponent
       ),
   },
+ 
   { path: '**', redirectTo: '' },
 ];

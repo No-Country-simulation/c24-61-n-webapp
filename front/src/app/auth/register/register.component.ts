@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { AuthService } from '../services/auth.services';
+import { AuthService } from '../../core/services/auth.services';
 
 @Component({
   selector: 'app-register',
@@ -71,7 +71,7 @@ export class RegisterComponent {
     }
 
     this._authService.register(this.username(), this.password()).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         this._messageService.add({
           severity: 'success',
           summary: 'Registro Exitoso',
