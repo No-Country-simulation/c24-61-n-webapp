@@ -1,0 +1,249 @@
+.empresa-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  .hero-section {
+    text-align: center;
+    padding: 4rem 0;
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      color: #666;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.companies-container {
+  .hero-section {
+    background-color: var(--muted-background);
+    padding: 4rem 0;
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text {
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: var(--text-muted);
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  .featured-companies {
+    padding: 4rem 0;
+
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+    }
+
+    .company-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+
+      .company-header {
+        display: flex;
+        padding: 1rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border-color);
+
+        img {
+          width: 64px;
+          height: 64px;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+      }
+
+      .company-content {
+        padding: 1rem;
+
+        .company-features {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.benefits-section {
+  padding: 4rem 0;
+  background-color: var(--muted-background);
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 0 1rem;
+    }
+  }
+
+  .benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+
+      i {
+        color: white;
+        font-size: 24px;
+      }
+    }
+
+    ul {
+      margin-top: 1rem;
+      
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        i {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}
+
+.testimonials-section {
+  padding: 4rem 0;
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 0 1rem;
+    }
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    .rating {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .quote {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .card {
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .stars-container {
+    color: var(--bs-primary);
+  }
+}
+
+.faq-section {
+  .card {
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.list-unstyled {
+  li {
+    .bi-check-circle-fill {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.bg-opacity-10 {
+  opacity: 0.1;
+}
