@@ -1,0 +1,27 @@
+.navbar {
+  font-family: 'Montserrat';
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-link {
+    color: #000;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover, &.active {
+      color: #2563eb;
+    }
+  }
+
+  .btn-outline-dark {
+    border-color: #000;
+    color: #000;
+    
+    &:hover {
+      background: #e2e8f0;
+    }
+  }
+
+}

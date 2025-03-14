@@ -1,4 +1,4 @@
-# 🚀 TalentHub
+# 🚀 Seek&Work
 
 **ContratApp** es una aplicación web fullstack diseñada para conectar reclutadores con candidatos en un proceso de selección eficiente. La plataforma permite la publicación de ofertas de empleo, la gestión de postulaciones y la administración de usuarios y procesos de reclutamiento.
 

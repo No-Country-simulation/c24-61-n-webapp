@@ -1,0 +1,43 @@
+<div class="detalle-empleo">
+  <div class="contenido">
+    <a class="volver" routerLink="/empleos">&larr; Volver a empleos</a>
+    <h1>{{ empleo.titulo }}</h1>
+    <p class="empresa">
+      <i class="bi bi-building"></i> {{ empleo.empresa }} - <i class="bi bi-geo-alt"></i> {{ empleo.ubicacion }}
+      <span class="fecha"> <i class="bi bi-clock"></i>  Hace {{ empleo.fecha }}</span>
+    </p>
+    <p class="salario"><strong>{{ empleo.salario }}</strong></p>
+
+    <h2>Descripción</h2>
+    <p>{{ empleo.descripcion }}</p>
+
+    <h2>Requisitos</h2>
+    <ul>
+      <li *ngFor="let requisito of empleo.requisitos">{{ requisito }}</li>
+    </ul>
+
+    <h2>Responsabilidades</h2>
+    <ul>
+      <li *ngFor="let responsabilidad of empleo.responsabilidades">{{ responsabilidad }}</li>
+    </ul>
+
+    <h2>Beneficios</h2>
+    <ul>
+      <li *ngFor="let beneficio of empleo.beneficios">{{ beneficio }}</li>
+    </ul>
+  </div>
+  <div class="sidebar">
+    <div class="card">
+      <h3>Aplicar a este empleo</h3>
+      <p>Completa tu solicitud para esta posición. Recibirás una confirmación por correo electrónico.</p>
+      <button class="btn-primario">Aplicar ahora</button>
+      <button class="btn-secundario">Guardar empleo</button>
+
+      <h3>Información de la empresa</h3>
+      <p><i class="bi bi-building"></i> {{ empleo.empresa }}</p>
+      <p><i class="bi bi-geo-alt"></i> {{ empleo.ubicacion }}</p>
+      <p><i class="bi bi-person"></i> {{ empleo.empresaInfo.empleados }}</p>
+      <p><i class="bi bi-calendar"></i> {{ empleo.empresaInfo.fundada }}</p>
+    </div>
+  </div>
+</div>

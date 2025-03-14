@@ -1,0 +1,226 @@
+<div class="company-profile">
+  <!-- Header Section -->
+  <div class="profile-header">
+    <div class="container">
+      <a routerLink="/companies" class="back-button">
+        <i class="bi bi-arrow-left"></i> Volver a empresas
+      </a>
+      
+      <div class="company-info">
+        <img [src]="company.logo" [alt]="company.name" class="company-logo">
+        <div class="company-details">
+          <h1>{{company.name}}</h1>
+          <div class="company-meta">
+            <span><i class="bi bi-building"></i> {{company.industry}}</span>
+            <span><i class="bi bi-people"></i> {{company.size}}</span>
+            <span><i class="bi bi-calendar"></i> Fundada en {{company.founded}}</span>
+            <a [href]="company.website" target="_blank"><i class="bi bi-globe"></i> {{company.website}}</a>
+          </div>
+          <div class="social-links">
+            <a [href]="company.socialMedia.linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+            <a [href]="company.socialMedia.twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+            <a [href]="company.socialMedia.facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a [href]="company.socialMedia.instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="tabs-container">
+    <div class="container">
+      <div class="tabs">
+        <a 
+          *ngFor="let tab of tabs" 
+          [routerLink]="[]" 
+          [queryParams]="{tab: tab.value}" 
+          [class.active]="activeTab === tab.value"
+          class="tab-button"
+        >
+          <i [class]="'bi ' + tab.icon"></i>
+          <span>{{tab.label}}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="container">
+    <!-- About Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'about'">
+      <section class="about-section">
+        <div class="about-header text-center mb-5">
+          <h2 class="display-6 fw-bold">Sobre {{company.name}}</h2>
+          <p class="lead text-muted mx-auto" style="max-width: 800px;">{{company.description}}</p>
+        </div>
+        
+        <div class="mission-vision">
+          <div class="info-card mission">
+            <div class="icon-wrapper">
+              <i class="bi bi-bullseye text-primary"></i>
+            </div>
+            <h3>Misión</h3>
+            <p>{{company.mission}}</p>
+          </div>
+          <div class="info-card vision">
+            <div class="icon-wrapper">
+              <i class="bi bi-eye text-primary"></i>
+            </div>
+            <h3>Visión</h3>
+            <p>{{company.vision}}</p>
+          </div>
+        </div>
+
+        <div class="values-section">
+          <div class="values-header text-center mb-4">
+            <h3 class="fw-bold">Nuestros Valores</h3>
+            <p class="text-muted">Los principios que guían nuestro trabajo</p>
+          </div>
+          <div class="values-grid">
+            <div class="value-card" *ngFor="let value of company.values">
+              <div class="value-icon">
+                <i class="bi bi-check-circle-fill text-primary"></i>
+              </div>
+              <h4>{{value}}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="locations-section mt-5">
+          <div class="locations-header text-center mb-4">
+            <h3 class="fw-bold">Nuestras Ubicaciones</h3>
+            <p class="text-muted">Dónde nos puedes encontrar</p>
+          </div>
+          <div class="grid-locations">
+            <div class="location-card sede-central">
+              <div class="location-header">
+                <i class="bi bi-building-fill text-primary fs-3"></i>
+                <h4>Sede Central</h4>
+              </div>
+              <div class="location-info">
+                <div class="info-item">
+                  <i class="bi bi-geo-alt"></i>
+                  <p>Paseo de la Castellana 123, Madrid</p>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-telephone"></i>
+                  <p>+34 91 234 5678</p>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-envelope"></i>
+                  <p>madrid&#64;talenthub.com</p>
+                </div>
+                <a href="https://maps.app.goo.gl/RWz1t1wcYriAeQNh8" target="_blank" class="btn-map">
+                  <i class="bi bi-map"></i> Ver en Google Maps
+                </a>
+              </div>
+            </div>
+            <div class="location-card oficina-barcelona">
+              <div class="location-header">
+                <i class="bi bi-building text-primary fs-3"></i>
+                <h4>Oficina Barcelona</h4>
+              </div>
+              <div class="location-info">
+                <div class="info-item">
+                  <i class="bi bi-geo-alt"></i>
+                  <p>Avinguda Diagonal 456, Barcelona</p>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-telephone"></i>
+                  <p>+34 93 234 5678</p>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-envelope"></i>
+                  <p>barcelona&#64;talenthub.com</p>
+                </div>
+                <a href="https://maps.app.goo.gl/1KHxepudmT39dbWg7" target="_blank" class="btn-map">
+                  <i class="bi bi-map"></i> Ver en Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Jobs Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'jobs'">
+      <section class="jobs-section">
+        <div class="jobs-header text-center mb-5">
+          <h2 class="display-6 fw-bold">Ofertas de empleo en {{company.name}}</h2>
+          <p class="lead text-muted">Explora nuestras oportunidades laborales actuales</p>
+        </div>
+        <div class="jobs-grid" *ngIf="company.jobs && company.jobs.length > 0; else noJobs">
+          <div class="job-card" *ngFor="let job of company.jobs">
+            <h3>{{job.title}}</h3>
+            <div class="job-details">
+              <span><i class="bi bi-geo-alt"></i> {{job.location}}</span>
+              <span><i class="bi bi-briefcase"></i> {{job.type}}</span>
+              <span><i class="bi bi-clock"></i> {{job.posted}}</span>
+            </div>
+            <p class="job-description">{{job.description}}</p>
+            <a>Ver detalles</a>
+          </div>
+        </div>
+        <ng-template #noJobs>
+          <div class="no-jobs-message text-center">
+            <i class="bi bi-info-circle"></i>
+            <p>Actualmente no hay ofertas de empleo disponibles.</p>
+          </div>
+        </ng-template>
+      </section>
+    </div>
+
+    <!-- Culture Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'culture'">
+      <section class="culture-section">
+        <div class="culture-header text-center mb-5">
+          <h2 class="display-6 fw-bold">Cultura y beneficios en {{company.name}}</h2>
+          <p class="lead text-muted mx-auto" style="max-width: 800px;">Descubre lo que hace especial trabajar con nosotros</p>
+        </div>
+
+        <div class="benefits-section">
+          <div class="benefits-header text-center mb-4">
+            <h3 class="fw-bold">Beneficios</h3>
+            <p class="text-muted">Lo que ofrecemos a nuestro equipo</p>
+          </div>
+          <div class="benefits-grid">
+            <div class="benefit-card" *ngFor="let benefit of company.benefits">
+              <div class="benefit-icon">
+                <i class="bi bi-check-circle-fill text-primary"></i>
+              </div>
+              <h4>{{benefit}}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-section mt-5">
+          <div class="team-header text-center mb-4">
+            <h3 class="fw-bold">Equipo directivo</h3>
+            <p class="text-muted">Las personas que lideran nuestra visión</p>
+          </div>
+          <div class="team-grid">
+            <div class="team-member" *ngFor="let member of company.team">
+              <img [src]="member.avatar" [alt]="member.name">
+              <h4>{{member.name}}</h4>
+              <p>{{member.position}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Gallery Tab -->
+    <div class="tab-content" *ngIf="activeTab === 'gallery'">
+      <section class="gallery-section">
+        <h2>Galería</h2>
+        <div class="photo-grid">
+          <div class="photo-item" *ngFor="let photo of company.photos">
+            <img [src]="photo" alt="Imagen de la empresa">
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
