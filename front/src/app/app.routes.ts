@@ -30,6 +30,13 @@ export const routes: Routes = [
   },
   { path: 'empresa/:id', component: CompanyProfilesComponent },
   {
+    path: 'nosotros',
+    loadComponent: () =>
+      import('./pages/about/about-details.component').then(
+        (m) => m.AboutDetailsComponent
+      ),
+  },
+  {
     path: 'login',
     loadComponent: () =>
       import('./auth/login/login.component').then((m) => m.LoginComponent),
