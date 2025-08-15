@@ -1,0 +1,51 @@
+.contenedor {
+  text-align: center;
+  padding: 40px;
+
+  .titulo {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .descripcion {
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    .tarjeta {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .icono {
+        font-size: 2rem;
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #444;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
