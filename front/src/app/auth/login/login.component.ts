@@ -79,4 +79,30 @@ export class LoginComponent {
   show() {
     this._messageService.add({ severity: 'info', summary: 'Info', detail: 'Ha iniciado sesión correctamente.' });
   }
+
+  navigateToRecruiters(): void {
+    this._messageService.add({ 
+      severity: 'info', 
+      summary: 'Portal de Reclutadores', 
+      detail: 'Redirigiendo al portal de reclutadores...' 
+    });
+    
+    setTimeout(() => {
+      // Aquí puedes cambiar la ruta según donde quieras que vaya el portal de reclutadores
+      this._router.navigate(['/empresas']);
+    }, 1000);
+  }
+
+  navigateToDashboard(): void {
+    this._messageService.add({ 
+      severity: 'info', 
+      summary: 'Dashboard', 
+      detail: 'Redirigiendo al dashboard...' 
+    });
+    
+    setTimeout(() => {
+      // Aquí puedes cambiar la ruta según donde esté tu dashboard
+      this._router.navigate(['/home']);
+    }, 1000);
+  }
 }
