@@ -49,6 +49,27 @@ export const routes: Routes = [
         (m) => m.RegisterComponent
       ),
   },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./pages/dashboard/dashboard.component').then(
+        (m) => m.DashboardComponent
+      ),
+  },
+  {
+    path: 'dashboard/candidates',
+    loadComponent: () =>
+      import('./pages/dashboard/candidates-list/candidates-list.component').then(
+        (m) => m.CandidatesListComponent
+      ),
+  },
+  {
+    path: 'dashboard/create-job',
+    loadComponent: () =>
+      import('./pages/dashboard/create-job/create-job.component').then(
+        (m) => m.CreateJobComponent
+      ),
+  },
  
   { path: '**', redirectTo: '' },
 ];

@@ -41,11 +41,14 @@ export class LoginComponent {
 
   ngOnInit(): void {
     console.log('Verificando autenticación...');
-    const userLoggedIn = this._authService.isAuthenticated();
-    console.log('Usuario autenticado:', userLoggedIn);
+    // Solo verificar autenticación en el navegador
+    if (typeof window !== 'undefined') {
+      const userLoggedIn = this._authService.isAuthenticated();
+      console.log('Usuario autenticado:', userLoggedIn);
 
-    if (userLoggedIn) {
-      this._router.navigate(['/home']);
+      if (userLoggedIn) {
+        this._router.navigate(['/home']);
+      }
     }
   }
 
@@ -101,8 +104,8 @@ export class LoginComponent {
     });
     
     setTimeout(() => {
-      // Aquí puedes cambiar la ruta según donde esté tu dashboard
-      this._router.navigate(['/home']);
+      // Redirigir al dashboard
+      this._router.navigate(['/dashboard']);
     }, 1000);
   }
 }

@@ -1,0 +1,199 @@
+<div class="create-job-container">
+  <div class="create-job-header">
+    <button class="back-btn" (click)="cancel()">
+      <i class="bi bi-arrow-left"></i>
+      Volver al Dashboard
+    </button>
+    <h1>Crear Nueva Oferta de Empleo</h1>
+  </div>
+
+  <div class="create-job-content">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="job-form">
+      <div class="form-section">
+        <h3>Información Básica</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="title">Título del puesto *</label>
+            <input 
+              type="text" 
+              id="title" 
+              formControlName="title" 
+              class="form-control"
+              [class.is-invalid]="getFieldError('title')"
+              placeholder="Ej: Desarrollador Frontend Senior">
+            <div class="error-message" *ngIf="getFieldError('title')">
+              {{ getFieldError('title') }}
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="company">Empresa *</label>
+            <input 
+              type="text" 
+              id="company" 
+              formControlName="company" 
+              class="form-control"
+              [class.is-invalid]="getFieldError('company')"
+              placeholder="Nombre de la empresa">
+            <div class="error-message" *ngIf="getFieldError('company')">
+              {{ getFieldError('company') }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="location">Ubicación *</label>
+            <input 
+              type="text" 
+              id="location" 
+              formControlName="location" 
+              class="form-control"
+              [class.is-invalid]="getFieldError('location')"
+              placeholder="Ej: Madrid, España">
+            <div class="error-message" *ngIf="getFieldError('location')">
+              {{ getFieldError('location') }}
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="salary">Salario *</label>
+            <input 
+              type="text" 
+              id="salary" 
+              formControlName="salary" 
+              class="form-control"
+              [class.is-invalid]="getFieldError('salary')"
+              placeholder="Ej: 40,000 - 60,000 €">
+            <div class="error-message" *ngIf="getFieldError('salary')">
+              {{ getFieldError('salary') }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="jobType">Tipo de empleo *</label>
+            <select 
+              id="jobType" 
+              formControlName="jobType" 
+              class="form-control">
+              <option *ngFor="let type of jobTypes" [value]="type.value">
+                {{ type.label }}
+              </option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="experienceLevel">Nivel de experiencia *</label>
+            <select 
+              id="experienceLevel" 
+              formControlName="experienceLevel" 
+              class="form-control">
+              <option *ngFor="let level of experienceLevels" [value]="level.value">
+                {{ level.label }}
+              </option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="workMode">Modalidad de trabajo *</label>
+            <select 
+              id="workMode" 
+              formControlName="workMode" 
+              class="form-control">
+              <option *ngFor="let mode of workModes" [value]="mode.value">
+                {{ mode.label }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Descripción del puesto</h3>
+        
+        <div class="form-group">
+          <label for="description">Descripción *</label>
+          <textarea 
+            id="description" 
+            formControlName="description" 
+            class="form-control"
+            [class.is-invalid]="getFieldError('description')"
+            rows="6"
+            placeholder="Describe las responsabilidades principales del puesto..."></textarea>
+          <div class="error-message" *ngIf="getFieldError('description')">
+            {{ getFieldError('description') }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Requisitos y Beneficios</h3>
+        
+        <div class="form-group">
+          <label for="requirements">Requisitos *</label>
+          <textarea 
+            id="requirements" 
+            formControlName="requirements" 
+            class="form-control"
+            [class.is-invalid]="getFieldError('requirements')"
+            rows="4"
+            placeholder="Lista los requisitos técnicos y habilidades necesarias..."></textarea>
+          <div class="error-message" *ngIf="getFieldError('requirements')">
+            {{ getFieldError('requirements') }}
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="benefits">Beneficios *</label>
+          <textarea 
+            id="benefits" 
+            formControlName="benefits" 
+            class="form-control"
+            [class.is-invalid]="getFieldError('benefits')"
+            rows="4"
+            placeholder="Describe los beneficios que ofrece la empresa..."></textarea>
+          <div class="error-message" *ngIf="getFieldError('benefits')">
+            {{ getFieldError('benefits') }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Información de Contacto</h3>
+        
+        <div class="form-group">
+          <label for="contactEmail">Email de contacto *</label>
+          <input 
+            type="email" 
+            id="contactEmail" 
+            formControlName="contactEmail" 
+            class="form-control"
+            [class.is-invalid]="getFieldError('contactEmail')"
+            placeholder="email@empresa.com">
+          <div class="error-message" *ngIf="getFieldError('contactEmail')">
+            {{ getFieldError('contactEmail') }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">
+          Cancelar
+        </button>
+        <button 
+          type="submit" 
+          class="btn btn-primary" 
+          [disabled]="isSubmitting || jobForm.invalid">
+          <span *ngIf="!isSubmitting">Publicar Oferta</span>
+          <span *ngIf="isSubmitting">
+            <i class="bi bi-arrow-clockwise spin"></i>
+            Publicando...
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
