@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouteService } from '../../core/services/route.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-    private router = inject(Router);
+  private routeService = inject(RouteService);
+  
   isAuthRoute(): boolean {
-    return ['/login', '/registro'].includes(this.router.url);
+    return this.routeService.shouldHideFooter();
   }
 }

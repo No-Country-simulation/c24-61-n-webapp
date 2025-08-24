@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { RouteService } from '../../core/services/route.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,9 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  private router = inject(Router);
+  private routeService = inject(RouteService);
   
   isAuthRoute(): boolean {
-    return ['/login', '/registro'].includes(this.router.url);
+    return this.routeService.shouldHideNavbar();
   }
 }

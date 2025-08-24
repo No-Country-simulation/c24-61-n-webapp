@@ -1,0 +1,78 @@
+<div class="candidates-container">
+  <div class="candidates-header">
+    <div class="header-left">
+      <button class="back-btn" (click)="goBack()">
+        <i class="bi bi-arrow-left"></i>
+        Volver al Dashboard
+      </button>
+      <h2>Candidatos</h2>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primary">
+        <i class="bi bi-plus"></i>
+        Nuevo Candidato
+      </button>
+    </div>
+  </div>
+
+  <div class="candidates-filters">
+    <div class="filter-group">
+      <label>Filtrar por estado:</label>
+      <select class="form-select">
+        <option value="">Todos los estados</option>
+        <option value="review">En revisión</option>
+        <option value="interview">Entrevista programada</option>
+        <option value="accepted">Aceptado</option>
+        <option value="rejected">Rechazado</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label>Buscar:</label>
+      <input type="text" class="form-control" placeholder="Buscar candidatos...">
+    </div>
+  </div>
+
+  <div class="candidates-list">
+    <div class="candidate-card" *ngFor="let candidate of candidates" (click)="viewCandidate(candidate.id)">
+      <div class="candidate-info">
+        <div class="candidate-avatar">
+          {{ candidate.avatar }}
+        </div>
+        <div class="candidate-details">
+          <h3 class="candidate-name">{{ candidate.name }}</h3>
+          <p class="candidate-email">{{ candidate.email }}</p>
+          <p class="candidate-position">{{ candidate.position }}</p>
+          <div class="candidate-meta">
+            <span class="meta-item">
+              <i class="bi bi-geo-alt"></i>
+              {{ candidate.location }}
+            </span>
+            <span class="meta-item">
+              <i class="bi bi-clock"></i>
+              {{ candidate.experience }}
+            </span>
+            <span class="meta-item">
+              <i class="bi bi-calendar"></i>
+              {{ candidate.appliedDate }}
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="candidate-actions">
+        <span class="status-badge" [class]="candidate.statusClass">
+          {{ candidate.status }}
+        </span>
+        <div class="action-buttons">
+          <button class="btn btn-sm btn-outline-primary" (click)="scheduleInterview(candidate.id); $event.stopPropagation()">
+            <i class="bi bi-calendar-check"></i>
+          </button>
+          <button class="btn btn-sm btn-outline-secondary" (click)="viewCandidate(candidate.id); $event.stopPropagation()">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

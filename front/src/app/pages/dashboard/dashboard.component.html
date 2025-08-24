@@ -1,0 +1,220 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.collapsed]="sidebarCollapsed">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="bi bi-building"></i>
+        </div>
+        <span class="logo-text">Seek&Work</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li class="nav-item active">
+          <a href="#" class="nav-link">
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard/create-job" class="nav-link">
+            <i class="bi bi-briefcase"></i>
+            <span>Ofertas de Empleo</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard/candidates" class="nav-link">
+            <i class="bi bi-people"></i>
+            <span>Candidatos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="bi bi-building"></i>
+            <span>Empresa</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="bi bi-gear"></i>
+            <span>Configuración</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" (click)="logout()">
+        <i class="bi bi-box-arrow-right"></i>
+        <span>Cerrar Sesión</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="header-left">
+        <h1 class="page-title">Dashboard de Reclutador</h1>
+        <p class="welcome-text">Bienvenido, {{ currentUser.name }}</p>
+      </div>
+      
+      <div class="header-right">
+        <button class="settings-btn">
+          <i class="bi bi-gear"></i>
+        </button>
+        <div class="user-avatar">
+          {{ currentUser.avatar }}
+        </div>
+        <button class="new-offer-btn" (click)="createNewOffer()">
+          <i class="bi bi-plus"></i>
+          Nueva Oferta
+        </button>
+      </div>
+    </header>
+
+    <!-- Key Metrics -->
+    <section class="metrics-section">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-content">
+            <h3 class="metric-value">{{ keyMetrics.activeOffers }}</h3>
+            <p class="metric-label">Ofertas Activas</p>
+            <span class="metric-change positive">{{ keyMetrics.offersChange }}</span>
+          </div>
+          <div class="metric-icon">
+            <i class="bi bi-briefcase"></i>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-content">
+            <h3 class="metric-value">{{ keyMetrics.totalCandidates }}</h3>
+            <p class="metric-label">Candidatos Totales</p>
+            <span class="metric-change positive">{{ keyMetrics.candidatesChange }}</span>
+          </div>
+          <div class="metric-icon">
+            <i class="bi bi-people"></i>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-content">
+            <h3 class="metric-value">{{ keyMetrics.scheduledInterviews }}</h3>
+            <p class="metric-label">Entrevistas Programadas</p>
+            <span class="metric-change">{{ keyMetrics.interviewsText }}</span>
+          </div>
+          <div class="metric-icon">
+            <i class="bi bi-calendar-check"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Dashboard Content -->
+    <div class="dashboard-content">
+      <!-- Job Offers Section -->
+      <section class="job-offers-section">
+        <div class="section-header">
+          <div class="section-tabs">
+            <button 
+              class="tab-btn" 
+              [class.active]="activeTab === 'offers'"
+              (click)="setActiveTab('offers')">
+              Ofertas de Empleo
+            </button>
+            <button 
+              class="tab-btn" 
+              [class.active]="activeTab === 'candidates'"
+              (click)="setActiveTab('candidates')">
+              Candidatos Recientes
+            </button>
+          </div>
+          <div class="section-actions">
+            <h2 class="section-title">Ofertas de Empleo Publicadas</h2>
+            <a href="#" class="view-all-link" (click)="viewAllOffers()">
+              Ver todas <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="job-offers-list" *ngIf="activeTab === 'offers'">
+          <div class="job-offer-card" *ngFor="let offer of jobOffers" (click)="viewJobDetails(offer.id)">
+            <div class="job-offer-content">
+              <h3 class="job-title">{{ offer.title }}</h3>
+              <div class="job-details">
+                <span class="job-time">
+                  <i class="bi bi-clock"></i>
+                  {{ offer.timeAgo }}
+                </span>
+                <span class="job-location">
+                  <i class="bi bi-geo-alt"></i>
+                  {{ offer.location }}
+                </span>
+                <span class="job-applicants">
+                  <i class="bi bi-people"></i>
+                  {{ offer.applicants }} aplicantes
+                </span>
+              </div>
+            </div>
+            <div class="job-offer-actions">
+              <span class="status-badge" [class]="offer.statusClass">
+                {{ offer.status }}
+              </span>
+              <i class="bi bi-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Grid -->
+      <div class="bottom-grid">
+        <!-- Recent Activity -->
+        <section class="recent-activity-section">
+          <div class="section-header">
+            <h3 class="section-title">Actividad Reciente</h3>
+            <p class="section-subtitle">Últimas acciones en la plataforma</p>
+          </div>
+          
+          <div class="activity-list">
+            <div class="activity-item" *ngFor="let activity of recentActivity">
+              <div class="activity-icon">
+                <i [class]="activity.icon"></i>
+              </div>
+              <div class="activity-content">
+                <p class="activity-message">{{ activity.message }}</p>
+                <span class="activity-time">{{ activity.timeAgo }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Upcoming Interviews -->
+        <section class="upcoming-interviews-section">
+          <div class="section-header">
+            <h3 class="section-title">Próximas Entrevistas</h3>
+            <p class="section-subtitle">Entrevistas programadas para esta semana</p>
+          </div>
+          
+          <div class="interviews-list">
+            <div class="interview-item" *ngFor="let interview of upcomingInterviews">
+              <div class="interview-avatar">
+                {{ interview.avatar }}
+              </div>
+              <div class="interview-content">
+                <h4 class="candidate-name">{{ interview.candidateName }}</h4>
+                <p class="job-title">{{ interview.jobTitle }}</p>
+              </div>
+              <div class="interview-time">
+                {{ interview.time }}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>

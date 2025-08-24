@@ -41,11 +41,14 @@ export class LoginComponent {
 
   ngOnInit(): void {
     console.log('Verificando autenticación...');
-    const userLoggedIn = this._authService.isAuthenticated();
-    console.log('Usuario autenticado:', userLoggedIn);
+    // Solo verificar autenticación en el navegador
+    if (typeof window !== 'undefined') {
+      const userLoggedIn = this._authService.isAuthenticated();
+      console.log('Usuario autenticado:', userLoggedIn);
 
-    if (userLoggedIn) {
-      this._router.navigate(['/home']);
+      if (userLoggedIn) {
+        this._router.navigate(['/home']);
+      }
     }
   }
 
@@ -78,5 +81,31 @@ export class LoginComponent {
 
   show() {
     this._messageService.add({ severity: 'info', summary: 'Info', detail: 'Ha iniciado sesión correctamente.' });
+  }
+
+  navigateToRecruiters(): void {
+    this._messageService.add({ 
+      severity: 'info', 
+      summary: 'Portal de Reclutadores', 
+      detail: 'Redirigiendo al portal de reclutadores...' 
+    });
+    
+    setTimeout(() => {
+      // Aquí puedes cambiar la ruta según donde quieras que vaya el portal de reclutadores
+      this._router.navigate(['/empresas']);
+    }, 1000);
+  }
+
+  navigateToDashboard(): void {
+    this._messageService.add({ 
+      severity: 'info', 
+      summary: 'Dashboard', 
+      detail: 'Redirigiendo al dashboard...' 
+    });
+    
+    setTimeout(() => {
+      // Redirigir al dashboard
+      this._router.navigate(['/dashboard']);
+    }, 1000);
   }
 }

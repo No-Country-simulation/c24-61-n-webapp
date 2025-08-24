@@ -8,7 +8,7 @@
             <rect width="20" height="14" x="2" y="6" rx="2"></rect>
           </svg>
 
-          <h2 class="mt-2">TalentHub</h2>
+          <h2 class="mt-2">Seek&Work</h2>
           <p class="text-muted mt-4">Iniciar sesión en su cuenta</p>
         </div>
 
@@ -47,7 +47,32 @@
           </button>
         </form>
 
-        <div class="text-center">
+        <!-- Botones adicionales para diferentes tipos de acceso -->
+        <div class="text-center mb-3">
+          <p class="text-muted small">O accede directamente a:</p>
+        </div>
+        
+        <div class="d-grid gap-2">
+          <button 
+            type="button" 
+            class="btn btn-outline-success" 
+            (click)="navigateToRecruiters()"
+            title="Acceso para reclutadores">
+            <i class="bi bi-people-fill me-2"></i>
+            Portal de Reclutadores
+          </button>
+          
+          <button 
+            type="button" 
+            class="btn btn-outline-info" 
+            (click)="navigateToDashboard()"
+            title="Acceso al dashboard">
+            <i class="bi bi-speedometer2 me-2"></i>
+            Dashboard
+          </button>
+        </div>
+
+        <div class="text-center mt-4">
           ¿No tienes una cuenta? <a routerLink="/registro">Regístrate</a>
         </div>
       </div>
